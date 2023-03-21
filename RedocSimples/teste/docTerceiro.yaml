@@ -1,0 +1,930 @@
+openapi: 3.0.1
+info:
+  title: DocumentoTerceirosAPI
+  version: v1
+  x-logo:
+    url: https://consultoriafr.com.br/images/fr_logo/logo-190x67.png
+servers:
+  - url: /internal/api-documento-terceiro
+paths:
+  /api/DocumentoTerceiro:
+    put:
+      tags:
+        - DocumentoTerceiro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AceitarCTeCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+    post:
+      tags:
+        - DocumentoTerceiro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsultarDadosCTeCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Arquivo:
+    post:
+      tags:
+        - DocumentoTerceiro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArquivoCTeCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Remover:
+    delete:
+      tags:
+        - DocumentoTerceiro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoverCTeCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Contador:
+    get:
+      tags:
+        - DocumentoTerceiro
+      parameters:
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Options/Emitente:
+    get:
+      tags:
+        - DocumentoTerceiro
+      parameters:
+        - name: TipoConsulta
+          in: query
+          schema:
+            $ref: '#/components/schemas/TipoConsultaOptions'
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Options/Tomador:
+    get:
+      tags:
+        - DocumentoTerceiro
+      parameters:
+        - name: TipoConsulta
+          in: query
+          schema:
+            $ref: '#/components/schemas/TipoConsultaOptions'
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Options/Transportador:
+    get:
+      tags:
+        - DocumentoTerceiro
+      parameters:
+        - name: TipoConsulta
+          in: query
+          schema:
+            $ref: '#/components/schemas/TipoConsultaOptions'
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Options/Participante:
+    get:
+      tags:
+        - DocumentoTerceiro
+      parameters:
+        - name: TipoConsulta
+          in: query
+          schema:
+            $ref: '#/components/schemas/TipoConsultaOptions'
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Options/StatusRecepcao:
+    get:
+      tags:
+        - DocumentoTerceiro
+      parameters:
+        - name: TipoConsulta
+          in: query
+          schema:
+            $ref: '#/components/schemas/TipoConsultaOptions'
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Options/CodigoRetornoApi:
+    get:
+      tags:
+        - DocumentoTerceiro
+      parameters:
+        - name: TipoConsulta
+          in: query
+          schema:
+            $ref: '#/components/schemas/TipoConsultaOptions'
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiro/Export:
+    post:
+      tags:
+        - DocumentoTerceiro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportarDocumentoCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiroEventoCTe:
+    put:
+      tags:
+        - DocumentoTerceiroEventoCTe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AceitarEventoCTeCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+    post:
+      tags:
+        - DocumentoTerceiroEventoCTe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsultarDadosEventoCTeCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiroEventoCTe/Arquivo:
+    post:
+      tags:
+        - DocumentoTerceiroEventoCTe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArquivoEventoCTeCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiroEventoCTe/Remover:
+    delete:
+      tags:
+        - DocumentoTerceiroEventoCTe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoverEventoCTeCommand'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiroEventoCTe/Contador:
+    get:
+      tags:
+        - DocumentoTerceiroEventoCTe
+      parameters:
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/DocumentoTerceiroEventoCTe/Options/TipoEvento:
+    get:
+      tags:
+        - DocumentoTerceiroEventoCTe
+      parameters:
+        - name: TipoConsulta
+          in: query
+          schema:
+            $ref: '#/components/schemas/TipoConsultaOptions'
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/User/Telas:
+    get:
+      tags:
+        - User
+      parameters:
+        - name: Projeto
+          in: query
+          required: true
+          schema:
+            maxLength: 50
+            minLength: 1
+            type: string
+        - name: IdUsuario
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+components:
+  schemas:
+    AceitarCTeCommand:
+      required:
+        - idCTe
+        - idUsuario
+        - justificativa
+        - projeto
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        idCTe:
+          type: array
+          items:
+            type: string
+            format: uuid
+        justificativa:
+          maxLength: 2000
+          minLength: 5
+          type: string
+      additionalProperties: false
+    AceitarEventoCTeCommand:
+      required:
+        - idEventoCTe
+        - idUsuario
+        - justificativa
+        - projeto
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        idEventoCTe:
+          type: string
+          format: uuid
+        justificativa:
+          maxLength: 2000
+          minLength: 5
+          type: string
+      additionalProperties: false
+    ArquivoCTeCommand:
+      required:
+        - idsCTe
+        - idUsuario
+        - projeto
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        idsCTe:
+          type: array
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    ArquivoEventoCTeCommand:
+      required:
+        - idsEventosCTe
+        - idUsuario
+        - projeto
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        idsEventosCTe:
+          type: array
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    ConsultarDadosCTeCommand:
+      required:
+        - idUsuario
+        - page
+        - per_page
+        - projeto
+        - sort
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        sort:
+          minLength: 1
+          type: string
+        page:
+          type: integer
+          format: int32
+        per_page:
+          type: integer
+          format: int32
+        dataInicial:
+          type: string
+          format: date-time
+          nullable: true
+        dataFinal:
+          type: string
+          format: date-time
+          nullable: true
+        statusRecepcao:
+          type: integer
+          format: int32
+          nullable: true
+        tomador:
+          type: string
+          nullable: true
+        emitente:
+          type: string
+          nullable: true
+        token:
+          type: string
+          nullable: true
+        chavesCTe:
+          type: array
+          items:
+            type: string
+          nullable: true
+        chavesCTeVinculado:
+          type: array
+          items:
+            type: string
+          nullable: true
+        idsCTe:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        codigoRetornoApi:
+          type: string
+          nullable: true
+        protocolo:
+          type: integer
+          format: int64
+          nullable: true
+        serie:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        numeros:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        numeroCTeRange:
+          $ref: '#/components/schemas/NumeroCTeRange'
+        dir:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ConsultarDadosEventoCTeCommand:
+      required:
+        - dir
+        - idUsuario
+        - page
+        - per_page
+        - projeto
+        - sort
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        sort:
+          minLength: 1
+          type: string
+        dir:
+          minLength: 1
+          type: string
+        page:
+          type: integer
+          format: int32
+        per_page:
+          type: integer
+          format: int32
+        dataInicial:
+          type: string
+          format: date-time
+          nullable: true
+        dataFinal:
+          type: string
+          format: date-time
+          nullable: true
+        statusRecepcao:
+          type: integer
+          format: int32
+          nullable: true
+        tipoEvento:
+          type: string
+          nullable: true
+        token:
+          type: string
+          nullable: true
+        chavesCTe:
+          type: array
+          items:
+            type: string
+          nullable: true
+        idsEventoCTe:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        codigoRetornoApi:
+          type: string
+          nullable: true
+        protocolo:
+          type: integer
+          format: int64
+          nullable: true
+      additionalProperties: false
+    ExportarDocumentoCommand:
+      required:
+        - idUsuario
+        - projeto
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        dataInicial:
+          type: string
+          format: date-time
+          nullable: true
+        dataFinal:
+          type: string
+          format: date-time
+          nullable: true
+        statusRecepcao:
+          type: integer
+          format: int32
+          nullable: true
+        tomador:
+          type: string
+          nullable: true
+        emitente:
+          type: string
+          nullable: true
+        token:
+          type: string
+          nullable: true
+        serie:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        numero:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        codigoRetornoApi:
+          type: string
+          nullable: true
+        chavesCTe:
+          type: array
+          items:
+            type: string
+          nullable: true
+        chavesCTeVinculado:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    NumeroCTeRange:
+      type: object
+      properties:
+        inicial:
+          type: integer
+          format: int32
+        final:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RemoverCTeCommand:
+      required:
+        - idCTe
+        - idUsuario
+        - justificativa
+        - projeto
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        idCTe:
+          type: array
+          items:
+            type: string
+            format: uuid
+        justificativa:
+          maxLength: 2000
+          minLength: 5
+          type: string
+      additionalProperties: false
+    RemoverEventoCTeCommand:
+      required:
+        - idEventoCTe
+        - idUsuario
+        - justificativa
+        - projeto
+      type: object
+      properties:
+        projeto:
+          maxLength: 50
+          minLength: 1
+          type: string
+        idUsuario:
+          type: string
+          format: uuid
+        idEventoCTe:
+          type: string
+          format: uuid
+        justificativa:
+          maxLength: 2000
+          minLength: 5
+          type: string
+      additionalProperties: false
+    Response:
+      type: object
+      properties:
+        success:
+          type: boolean
+          readOnly: true
+        errors:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+        result:
+          nullable: true
+      additionalProperties: false
+    TipoConsultaOptions:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      type: integer
+      format: int32
